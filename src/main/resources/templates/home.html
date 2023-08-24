@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hotel List</title>
+</head>
+<body>
+    <h1>List of Hotels</h1>
+    <ul>
+        <li th:each="hotel : ${hotels}">
+            <span th:text="${hotel.hotelName}"></span>
+        </li>
+    </ul>
+</body>
+</html>

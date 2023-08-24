@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter Details Form</title>
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	
+	<br>
+	<br>
+	<div class = "container">
+		<div class = "row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h2 class = "text-center"> Update Counter </h2>
+				<div class = "card-body">
+					<form th:action="@{/counters/edited/{id}(id=${counter.id})}" th:object = "${counter}" method="POST">
+						<div class ="form-group">
+							<label> Counter Number </label>
+							<input
+							type = "text"
+							name = "counterNumber"
+							th:field="*{counterNumber}"
+							class = "form-control"
+							placeholder="Enter Counter Number" 
+							required
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> Hotel Name </label>
+							<input
+							type = "text"
+							name = "hotelName"
+							th:field="*{hotelName}"
+							class = "form-control"
+							placeholder="Enter Hotel Name" 
+							required
+							/>
+						</div>
+						
+						<div class = "box-footer">
+							<button type="submit" class = "btn btn-primary">
+								Submit
+							</button>
+						</div>
+					</form>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+    
+</body>
+</html>

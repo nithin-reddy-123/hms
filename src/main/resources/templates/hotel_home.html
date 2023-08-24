@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Hotel Home</title>
+		<style>
+  .button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .button-link:hover {
+    background-color: #2980b9;
+  }
+</style>
+	</head>
+	<body>
+		<h1>This is your hotel home page</h1>
+		<a th:href="@{http://localhost:7777/menu}" class="button-link">Add Menu</a>
+		<a th:href="@{http://localhost:7777/counters/new}" class="button-link">Add Counters</a>
+	</body>
+</html>
