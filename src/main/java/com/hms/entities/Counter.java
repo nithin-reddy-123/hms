@@ -12,8 +12,7 @@ public class Counter {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String hotelName;
-	private Integer counterNumber;
+	private Long counterNumber;
 	@ManyToOne
 	@JoinColumn(name="hotel_id")
 	private Hotel hotel;
@@ -24,16 +23,10 @@ public class Counter {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getHotelName() {
-		return hotelName;
-	}
-	public void setHotelName(String hotelName) {
-		this.hotelName = hotelName;
-	}
-	public Integer getCounterNumber() {
+	public Long getCounterNumber() {
 		return counterNumber;
 	}
-	public void setCounterNumber(Integer counterNumber) {
+	public void setCounterNumber(Long counterNumber) {
 		this.counterNumber = counterNumber;
 	}
 	public Hotel getHotel() {
@@ -41,12 +34,6 @@ public class Counter {
 	}
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
-	}
-	public Long getHotelId() {
-		return hotel.getId();
-	}
-	public void setHotelId(Long hotelId) {
-		this.hotel.setId(hotelId);
 	}
 	
 }

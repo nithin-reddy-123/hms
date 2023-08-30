@@ -8,38 +8,37 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Starter {
+public class Maincourse {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String starterName;
-	private Long starterPrice;
+	private String maincourseName;
+	private Long maincoursePrice;
 	@ManyToOne
 	@JoinColumn(name="hotel_id")
 	private Hotel hotel;
-	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getStarterName() {
-		return starterName;
+	public String getMaincourseName() {
+		return maincourseName;
 	}
-	public void setStarterName(String starterName) {
-		this.starterName = starterName;
+	public void setMaincourseName(String mainCourseName) {
+		this.maincourseName = mainCourseName;
+	}
+	public Long getMaincoursePrice() {
+		return maincoursePrice;
+	}
+	public void setMaincoursePrice(Long mainCoursePrice) {
+		this.maincoursePrice = mainCoursePrice;
 	}
 	public Hotel getHotel() {
 		return hotel;
 	}
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
-	}
-	public Long getStarterPrice() {
-		return starterPrice;
-	}
-	public void setStarterPrice(Long starterPrice) {
-		this.starterPrice = starterPrice;
 	}
 }

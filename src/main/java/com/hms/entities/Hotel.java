@@ -22,6 +22,10 @@ public class Hotel {
 	private List<Counter>counters;
 	@OneToMany(mappedBy="hotel", cascade = CascadeType.ALL)
 	private List<Starter>starters;
+	@OneToMany(mappedBy="hotel", cascade = CascadeType.ALL)
+	private List<Maincourse>maincourses;
+	@OneToMany(mappedBy="hotel", cascade = CascadeType.ALL)
+	private List<Dessert>desserts;
 	
 	public Long getId() {
 		return id;

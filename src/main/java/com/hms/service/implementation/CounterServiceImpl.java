@@ -46,19 +46,12 @@ public class CounterServiceImpl implements CounterService{
 
 	@Override
 	public void deleteCounterById(Long id) {
-
-		counterRepository.deleteById(id);
-		
+		counterRepository.deleteById(id);	
 	}
 
 	@Override
-	public boolean isCounterNumberTaken(Integer counterNumber) {
-		return counterRepository.existsByCounterNumber(counterNumber);
+	public List<Counter> getCountersByHotelId(Long hotelId) {
+		return counterRepository.findAllByHotelId(hotelId);
 	}
-
-	
-
-
-	
 
 }

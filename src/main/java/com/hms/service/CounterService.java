@@ -12,6 +12,5 @@ public interface CounterService {
 	Counter updateCounter(Counter counter);
 	Counter saveCounter(Counter counter);
 	void deleteCounterById(Long id);
-	public boolean isCounterNumberTaken(Integer counterNumber); 
-	
+	List<Counter> getCountersByHotelId(Long hotelId);
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Counter Details Form</title>
+    <title>Dessert Details Form</title>
     <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -14,21 +14,33 @@
 	<div class = "container">
 		<div class = "row">
 			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-				<h2 class = "text-center"> Create New Counter </h2>
+				<h2 class = "text-center"> Edit Dessert </h2>
 				<div class = "card-body">
-					<form th:action="@{/{hotelname}/counters(hotelname=${hotel.hotelName})}" th:object = "${counter}" method="POST">
+					<form th:action="@{/{hotelname}/menu/desserts/edit/{id}(hotelname=${hotel.hotelName},id=${dessert.id})}" th:object = "${dessert}" method="POST">
+						
 						<div class ="form-group">
-							<label> Counter Number </label>
+							<label> Dessert Name </label>
 							<input
 							type = "text"
-							name = "counterNumber"
-							th:field="*{counterNumber}"
+							name = "dessertName"
+							th:field="*{dessertName}"
 							class = "form-control"
-							placeholder="Enter Counter Number" 
+							placeholder="Enter Dessert Name" 
 							required
 							/>
 						</div>
 						
+						<div class ="form-group">
+							<label> Dessert Price </label>
+							<input
+							type = "text"
+							name = "dessertPrice"
+							th:field="*{dessertPrice}"
+							class = "form-control"
+							placeholder="Enter Dessert Price" 
+							required
+							/>
+						</div>
 						
 						<div class = "box-footer">
 							<button type="submit" class = "btn btn-primary">

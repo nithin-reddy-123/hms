@@ -11,7 +11,9 @@
     }
 </style>
 
+</head>
 <body>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Your Logo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,10 +31,10 @@
                 <a class="nav-link" th:href="@{/{hotelname}/menu/starters(hotelname=${hotelName})}">Starters</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/{hotelname}/menu/maincourses(hotelname=${hotelName})}">Main Course</a>
+                <a class="nav-link" th:href="@{/{hotelname}/menu/maincourses(hotelname=${hotelName})}">Main Course <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/{hotelname}/menu/desserts(hotelname=${hotelName})}">Desserts <span class="sr-only">(current)</span></a>
+                <a class="nav-link" th:href="@{/{hotelname}/menu/desserts(hotelname=${hotelName})}">Desserts</a>
             </li>
             <!--<li class="nav-item">
                 <a class="nav-link" th:href="@{/{hotelname}/menu/billsummary(hotelname=${hotelName})}">Bill Summary</a>
@@ -44,7 +46,7 @@
   
 <div class="container mt-5">
 	<div class="text-center col-lg-12">
-		<h2>Desserts</h2>
+		<h2>MainCourses</h2>
 	</div>
     
     <table class="table table-bordered">
@@ -56,12 +58,12 @@
         </tr>
         </thead>
         <tbody>
-		<tr th:each="dessert:${desserts}">
-            <td th:text="${dessert.dessertName}"></td>
-            <td th:text="${dessert.dessertPrice}"></td>
+		<tr th:each="maincourse:${maincourses}">
+            <td th:text="${maincourse.maincourseName}"></td>
+            <td th:text="${maincourse.maincoursePrice}"></td>
             <td>
-                <button><a th:href="@{/{hotelname}/menu/desserts/edit/{id}(hotelname=${hotelName},id=${dessert.id})}" >Update</a></button>
-                <button><a th:href="@{/{hotelname}/menu/desserts/delete/{id}(hotelname=${hotelName},id=${dessert.id})}" >Delete</a></button>
+                <button><a th:href="@{/{hotelname}/menu/maincourses/edit/{id}(hotelname=${hotelName},id=${maincourse.id})}" >Update</a></button>
+                <button><a th:href="@{/{hotelname}/menu/maincourses/delete/{id}(hotelname=${hotelName},id=${maincourse.id})}" >Delete</a></button>
             </td>
         </tr>
         </tbody>

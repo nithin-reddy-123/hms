@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Counter Details Form</title>
+    <title>Maincourse Details Form</title>
     <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -14,21 +14,33 @@
 	<div class = "container">
 		<div class = "row">
 			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-				<h2 class = "text-center"> Create New Counter </h2>
+				<h2 class = "text-center"> Edit New MainCourse </h2>
 				<div class = "card-body">
-					<form th:action="@{/{hotelname}/counters(hotelname=${hotel.hotelName})}" th:object = "${counter}" method="POST">
+					<form th:action="@{/{hotelname}/menu/maincourses/edit/{id}(hotelname=${hotel.hotelName},id=${maincourse.id})}" th:object = "${maincourse}" method="POST">
+						
 						<div class ="form-group">
-							<label> Counter Number </label>
+							<label> Maincourse Name </label>
 							<input
 							type = "text"
-							name = "counterNumber"
-							th:field="*{counterNumber}"
+							name = "maincourseName"
+							th:field="*{maincourseName}"
 							class = "form-control"
-							placeholder="Enter Counter Number" 
+							placeholder="Enter Maincourse Name" 
 							required
 							/>
 						</div>
 						
+						<div class ="form-group">
+							<label> Maincourse Price </label>
+							<input
+							type = "text"
+							name = "maincoursePrice"
+							th:field="*{maincoursePrice}"
+							class = "form-control"
+							placeholder="Enter Maincourse Price" 
+							required
+							/>
+						</div>
 						
 						<div class = "box-footer">
 							<button type="submit" class = "btn btn-primary">
