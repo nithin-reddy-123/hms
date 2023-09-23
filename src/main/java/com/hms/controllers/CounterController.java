@@ -1,5 +1,6 @@
 package com.hms.controllers;
 
+import com.hms.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +23,7 @@ public class CounterController {
 	
 	@Autowired
 	private UserService userService;
-	
+
 	//posts new counter
 	/**@PostMapping("/counters/new")
 	public String createCounter(@ModelAttribute Counter counterForm,Model model)
@@ -116,6 +117,12 @@ public class CounterController {
 		String hotelName=hotel.getHotelName();
 		return "redirect:/"+hotelName+"/home"; //redirects home page
 	}
+
+	@GetMapping("/home")
+	public String homeLogin()
+	{
+		return "home";
+	}
 	
 	//creates home
 	@GetMapping("/{hotelname}/home")
@@ -132,7 +139,8 @@ public class CounterController {
 	}
 	
 	@GetMapping("/register")
-	public String showRegistrationForm() {
+	public String showRegistrationForm(Model model) {
+		model.addAttribute("user", new User());
 		return "register";
 	}
 	
@@ -144,6 +152,12 @@ public class CounterController {
 	
 	@GetMapping("/userlogin")
 	public String login() {
+		return "userlogin";
+	}
+
+	@PostMapping("/userlogin")
+	public String validateUser(@ModelAttribute("user") UserRegistration userRegistration) {
+		//dummy function
 		return "userlogin";
 	}
 }
