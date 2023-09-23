@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,11 +26,11 @@ public class UserServiceImpl implements UserService{
 	private UserRepository userRepository;
 	
 	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepository.findByEmail(username);
+	public UserDetails loadUserByUsername(String emailAddress) throws UsernameNotFoundException {
+		User user = userRepository.findByEmail(emailAddress);
 		if(user == null) {
 			throw new UsernameNotFoundException("Invalid username or password.");
 		}
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService{
 		user.setFirstName(userRegistration.getFirstName());
 		user.setLastName(userRegistration.getLastName());
 		user.setEmail(userRegistration.getEmail());
-		user.setPassword(passwordEncoder.encode(userRegistration.getPassword()));
+		user.setPassword(bCryptPasswordEncoder.encode(userRegistration.getPassword()));
 		user.setRoles(Arrays.asList(role));
 		return userRepository.save(user);
 	}
