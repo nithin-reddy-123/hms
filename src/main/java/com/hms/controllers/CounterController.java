@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.hms.entities.Hotel;
 import com.hms.service.HotelService;
+import com.hms.service.UserService;
+import com.hms.web.UserRegistration;
 
 
 @Controller
@@ -17,6 +19,9 @@ public class CounterController {
 	
 	@Autowired
 	private HotelService hotelService;
+	
+	@Autowired
+	private UserService userService;
 	
 	//posts new counter
 	/**@PostMapping("/counters/new")
@@ -120,11 +125,25 @@ public class CounterController {
 		return "home";
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/") 
 	public String appHome(Model model)
 	{
 		return "apphome";
 	}
 	
-		
+	@GetMapping("/register")
+	public String showRegistrationForm() {
+		return "register";
+	}
+	
+	@PostMapping("/register")
+	public String registerUserAccount(@ModelAttribute("user") UserRegistration registration) {
+		userService.save(registration);
+		return "redirect:/register?success";
+	}
+	
+	@GetMapping("/userlogin")
+	public String login() {
+		return "userlogin";
+	}
 }

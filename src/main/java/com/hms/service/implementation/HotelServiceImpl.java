@@ -11,7 +11,7 @@ import com.hms.repositories.HotelRepository;
 import com.hms.service.HotelService;
 
 @Service
-public class HotelServiceImpl implements HotelService{
+public class HotelServiceImpl implements HotelService {
 	
 	@Autowired
 	private HotelRepository hotelRepository;
