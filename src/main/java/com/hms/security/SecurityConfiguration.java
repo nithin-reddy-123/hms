@@ -7,8 +7,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -18,35 +16,28 @@ import com.hms.service.UserService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	AuthenticationManager authenticationManager;
-	
-	@Bean 
-	public PasswordEncoder passwordEncoder() { 
-		PasswordEncoder encoder = new BCryptPasswordEncoder();
-        return encoder;
-	}
-	
+
 	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		
+
 		AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder.userDetailsService(userService);
-        authenticationManager = authenticationManagerBuilder.build();
-        
+//        authenticationManager = authenticationManagerBuilder.build();
+
 		http
 	  .csrf(csrf -> csrf.disable())
 	  .authorizeHttpRequests(authz -> authz
-			  							.requestMatchers("/register/**").permitAll()
+			  							.requestMatchers("/register").permitAll()
 			  							.anyRequest().authenticated())
       .formLogin(formLogin -> formLogin
-    		  						.loginPage("/login.html").permitAll()
-    		  						.loginProcessingUrl("/perform_login")
-    		  						.defaultSuccessUrl("/homepage.html", true)
-    		  						.failureUrl("/login.html?error=true"))
+    		  						.loginPage("/userlogin").permitAll()
+    		  						.defaultSuccessUrl("/home", true)
+    		  						.failureUrl("/userlogin?error=true"))
       .logout(logout ->logout
     		  				.invalidateHttpSession(true)
     		  				.clearAuthentication(true)
