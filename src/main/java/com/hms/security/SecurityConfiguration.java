@@ -23,6 +23,12 @@ public class SecurityConfiguration {
 	AuthenticationManager authenticationManager;
 
 	@Bean
+	public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler()
+	{
+		return new CustomAuthenticationSuccessHandler();
+	}
+
+	@Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
 		AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
@@ -36,7 +42,7 @@ public class SecurityConfiguration {
 			  							.anyRequest().authenticated())
       .formLogin(formLogin -> formLogin
     		  						.loginPage("/userlogin").permitAll()
-    		  						.defaultSuccessUrl("/home", true)
+    		  						.successHandler(customAuthenticationSuccessHandler())
     		  						.failureUrl("/userlogin?error=true"))
       .logout(logout ->logout
     		  				.invalidateHttpSession(true)
