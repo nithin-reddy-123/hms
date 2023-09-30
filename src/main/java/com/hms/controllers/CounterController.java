@@ -128,6 +128,7 @@ public class CounterController {
 	@GetMapping("/{hotelname}/home")
 	public String showYourHotel(@PathVariable String hotelname,Model model)
 	{
+		model.addAttribute("hotelName",hotelname);
 		model.addAttribute("hotels", hotelService.getHotelByHotelName(hotelname)); // adds hotels attribute and this is used in home.html page to show list of all hotels
 		return "home";
 	}
