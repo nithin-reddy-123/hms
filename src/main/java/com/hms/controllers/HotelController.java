@@ -331,4 +331,10 @@ public class HotelController {
 		return "billsummary";
 	}
 
+	@GetMapping("/{hotelname}/addmenu")
+	public String addToMenu(@PathVariable String hotelname, Model model)
+	{
+		model.addAttribute("hotelName", hotelname);
+		return "create_menu";
+	}
 }
