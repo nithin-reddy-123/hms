@@ -21,17 +21,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/{hotelname}/home(hotelname=${hotelName})}">Home</a>
             </li>
+            <!--
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/{hotelname}/counters(hotelname=${hotelName})}">Counters</a>
-            </li>
+            </li>-->
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/{hotelname}/menu/starters(hotelname=${hotelName})}">Starters</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/{hotelname}/menu/maincourses(hotelname=${hotelName})}">Main Course <span class="sr-only">(current)</span></a>
+                <a class="nav-link active" th:href="@{/{hotelname}/menu/maincourses(hotelname=${hotelName})}">Main Course</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/{hotelname}/menu/desserts(hotelname=${hotelName})}">Desserts</a>
