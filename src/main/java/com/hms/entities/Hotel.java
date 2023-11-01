@@ -63,5 +63,10 @@ public class Hotel {
 	public void setUserLastName(String userLastName) {
 		this.userLastName = userLastName;
 	}
-	
+	public List<Starter> getStarters() { return starters; }
+	public void setStarters(List<Starter> starters) { this.starters = starters; }
+	public List<Maincourse> getMaincourses() { return maincourses; }
+	public void setMaincourses(List<Maincourse> maincourses) { this.maincourses = maincourses; }
+	public List<Dessert> getDesserts() { return desserts; }
+	public void setDesserts(List<Dessert> desserts) { this.desserts = desserts; }
 }
