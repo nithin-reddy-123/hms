@@ -13,4 +13,6 @@ public interface CounterService {
 	Counter saveCounter(Counter counter);
 	void deleteCounterById(Long id);
 	List<Counter> getCountersByHotelId(Long hotelId);
+
+	boolean existsCounterByNumber(Long counterNumber);
 }

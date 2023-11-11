@@ -54,4 +54,9 @@ public class CounterServiceImpl implements CounterService{
 		return counterRepository.findAllByHotelId(hotelId);
 	}
 
+	@Override
+	public boolean existsCounterByNumber(Long counterNumber) {
+		return counterRepository.existsByCounterNumber(counterNumber);
+	}
+
 }

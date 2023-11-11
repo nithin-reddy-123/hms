@@ -14,6 +14,10 @@
 	<div class = "container">
 		<div class = "row">
 			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<br>
+				<div th:if="${counterExistsError}" class="alert alert-danger" role="alert">
+					<span th:text="${counterExistsError}"></span>
+				</div>
 				<h2 class = "text-center"> Create New Counter </h2>
 				<div class = "card-body">
 					<form th:action="@{/{hotelname}/counters(hotelname=${hotel.hotelName})}" th:object = "${counter}" method="POST">

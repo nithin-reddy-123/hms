@@ -7,6 +7,6 @@ import com.hms.entities.Counter;
 public interface CounterRepository extends JpaRepository<Counter, Long>{
 
 	List<Counter> findAllByHotelId(Long hotelId);
-	
 
+	boolean existsByCounterNumber(Long counterNumber);
 }
