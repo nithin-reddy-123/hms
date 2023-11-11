@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User save(UserRegistration userRegistration) {
 		Role role=new Role();
-		role.setName("USER");
+		role.setName("ADMIN");
 		User user = new User();
 		user.setFirstName(userRegistration.getFirstName());
 		user.setLastName(userRegistration.getLastName());
