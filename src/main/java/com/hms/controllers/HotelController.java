@@ -272,10 +272,20 @@ public class HotelController {
 		
 	//to post counters
 	@PostMapping("/{hotelname}/counters")
-	public String createCounter(@PathVariable String hotelname, @ModelAttribute("counter") Counter counter)
+	public String createCounter(@PathVariable String hotelname, @ModelAttribute("counter") Counter counter, Model model)
 	{
 		Long hid=hotelService.findHotelIdByHotelName(hotelname);
 		Hotel h=hotelService.getHotelById(hid);
+		if (counterService.existsCounterByNumber(counter.getCounterNumber())) {
+
+			model.addAttribute("counterExistsError", "Counter with the same number already exists.");
+			Long ehotelid=hotelService.findHotelIdByHotelName(hotelname);
+			Hotel ehotel=hotelService.getHotelById(ehotelid);
+			Counter ecounter=new Counter();
+			model.addAttribute("hotel", ehotel);
+			model.addAttribute("counter",ecounter);
+			return "create_counter";
+		}
 		counter.setHotel(h);
 		counterService.saveCounter(counter);
 		return "redirect:/"+hotelname+"/counters";
